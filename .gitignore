@@ -4,3 +4,5 @@ dist/
 .env
 *.local.json
 webview/
+__pycache__/
+*.pyc
