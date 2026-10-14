@@ -1,0 +1,6 @@
+dist/
+*.exe
+*.log
+.env
+*.local.json
+webview/

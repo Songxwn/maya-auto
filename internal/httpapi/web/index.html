@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maya Auto</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <div id="app">
+    <aside>
+      <div class="brand">
+        <span class="mark">MA</span>
+        <div>
+          <strong>Maya Auto</strong>
+          <em>Maya 2024+</em>
+        </div>
+      </div>
+      <nav id="nav">
+        <button type="button" data-page="overview">总览</button>
+        <button type="button" data-page="connect">连接</button>
+        <button type="button" data-page="model">建模</button>
+        <button type="button" data-page="fx">特效</button>
+        <button type="button" data-page="sim">解算</button>
+        <button type="button" data-page="light">灯光</button>
+        <button type="button" data-page="render">渲染</button>
+        <button type="button" data-page="agent">指令</button>
+        <button type="button" data-page="newapi">NewAPI</button>
+        <button type="button" data-page="mcp">MCP</button>
+        <button type="button" data-page="logs">日志</button>
+      </nav>
+      <div id="connPill" class="pill">未连接</div>
+      <div id="ver" class="ver"></div>
+    </aside>
+    <main>
+      <header>
+        <h1 id="title">总览</h1>
+        <button type="button" id="quit" class="ghost">退出</button>
+      </header>
+      <section id="content"></section>
+    </main>
+  </div>
+  <div id="toasts"></div>
+  <script src="app.js"></script>
+</body>
+</html>
