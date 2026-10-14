@@ -96,11 +96,27 @@ func extractJSON(raw string) string {
 	if json.Valid([]byte(s)) && strings.HasPrefix(s, "{") {
 		return s
 	}
-	for i := strings.LastIndex(s, "{"); i >= 0; i = strings.LastIndex(s[:i], "{") {
-		frag, ok := sliceJSONObject(s[i:])
-		if ok && json.Valid([]byte(frag)) {
-			return frag
+	var fallback string
+	for i := 0; i < len(s); i++ {
+		if s[i] != '{' {
+			continue
 		}
+		frag, ok := sliceJSONObject(s[i:])
+		if !ok || !json.Valid([]byte(frag)) {
+			continue
+		}
+		var probe map[string]json.RawMessage
+		if json.Unmarshal([]byte(frag), &probe) == nil {
+			if _, has := probe["ok"]; has {
+				return frag
+			}
+		}
+		if fallback == "" {
+			fallback = frag
+		}
+	}
+	if fallback != "" {
+		return fallback
 	}
 	return s
 }
